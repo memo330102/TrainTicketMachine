@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrainTicketMachine.Domain.Interfaces.Infrastructure
+namespace TrainTicketMachine.Infrastructure.Contracts
 {
     public interface IStationRepository
     {

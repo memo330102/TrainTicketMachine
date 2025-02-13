@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TrainTicketMachine.Domain.Interfaces.Application;
-using TrainTicketMachine.Domain.Interfaces.Infrastructure;
+﻿using TrainTicketMachine.Application.Contracts;
+using TrainTicketMachine.Domain.Entities;
+using TrainTicketMachine.Infrastructure.Contracts;
 
-namespace TrainTicketMachine.Application
+namespace TrainTicketMachine.Application.Services
 {
     public class StationService : IStationService
     {
@@ -17,9 +13,10 @@ namespace TrainTicketMachine.Application
             _repository = repository;
         }
 
-        public async Task<List<string>> SearchStationsAsync(string query)
+        public async Task<List<StationAggregate>> SearchStationsAsync(string query)
         {
-            return await _repository.SearchStationsAsync(query);
+            var stations = await _repository.SearchStationsAsync(query);
+            return stations.Select(s => new StationAggregate(s)).ToList();
         }
 
         public async Task<List<char>> GetNextCharactersAsync(string query)

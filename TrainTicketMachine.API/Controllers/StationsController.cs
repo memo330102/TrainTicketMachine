@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TrainTicketMachine.Domain.Interfaces.Application;
+using TrainTicketMachine.Application.Contracts;
 
 namespace TrainTicketMachine.API.Controllers
 {
@@ -20,7 +20,7 @@ namespace TrainTicketMachine.API.Controllers
         {
             var stations = await _stationService.SearchStationsAsync(query);
             var nextChars = await _stationService.GetNextCharactersAsync(query);
-            return Ok(new { Stations = stations, NextCharacters = nextChars });
+            return Ok(new { Stations = stations.Select(s => s.Name.Value), NextCharacters = nextChars });
         }
     }
 }

@@ -1,13 +1,14 @@
 ﻿using System.Text.Json;
 using Microsoft.Extensions.Configuration;
-using TrainTicketMachine.Domain.Interfaces.Infrastructure;
+using TrainTicketMachine.Infrastructure.Contracts;
+using TrainTicketMachine.Infrastructure.Models.Statıon;
 
-namespace TrainTicketMachine.Infrastructure
+namespace TrainTicketMachine.Infrastructure.Repositories
 {
     public class StationRepository : IStationRepository
     {
         private static readonly HttpClient _httpClient = new HttpClient();
-        private readonly string _dataUrl;
+        private readonly string _dataUrl = string.Empty;
 
         public StationRepository(IConfiguration configuration)
         {
@@ -36,15 +37,8 @@ namespace TrainTicketMachine.Infrastructure
         private async Task<List<string>> GetStationsFromRemoteAsync()
         {
             var response = await _httpClient.GetStringAsync(_dataUrl);
-            var stationData = JsonSerializer.Deserialize<List<StationDTO>>(response);
+            var stationData = JsonSerializer.Deserialize<List<RemoteStationResponse>>(response);
             return stationData.Select(s => s.stationName).ToList();
-        }
-
-        private class StationDTO
-        {
-            public string stationName { get; set; } = string.Empty;
-            public string stationCode { get; set; } = string.Empty;
-
         }
     }
 }
