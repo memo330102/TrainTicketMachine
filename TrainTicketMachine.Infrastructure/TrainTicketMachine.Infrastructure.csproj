@@ -14,4 +14,9 @@
     <ProjectReference Include="..\TrainTicketMachine.Domain\TrainTicketMachine.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BackgroundServices\" />
+    <Folder Include="Caching\" />
+  </ItemGroup>
+
 </Project>

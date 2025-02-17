@@ -7,7 +7,7 @@ using TrainTicketMachine.Infrastructure.Models.Statıon;
 
 namespace TrainTicketMachine.Infrastructure.Contracts
 {
-    public interface IRemoteStationProvider
+    public interface IStationDataSource
     {
         Task<List<RemoteStationResponse>> GetStationsFromRemoteAsync();
     }

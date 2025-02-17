@@ -10,12 +10,12 @@ using TrainTicketMachine.Infrastructure.Models.Statıon;
 
 namespace TrainTicketMachine.Infrastructure.Providers
 {
-    public class RemoteStationProvider : IRemoteStationProvider
+    public class JsonStationProvider : IStationDataSource
     {
         private static readonly HttpClient _httpClient = new HttpClient();
         private readonly string _dataUrl;
 
-        public RemoteStationProvider(IConfiguration configuration)
+        public JsonStationProvider(IConfiguration configuration)
         {
             _dataUrl = configuration["StationData:Url"];
         }

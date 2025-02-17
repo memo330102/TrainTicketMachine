@@ -7,8 +7,8 @@ namespace TrainTicketMachine.Infrastructure.Repositories
 {
     public class StationRepository : IStationRepository
     {
-        private readonly IRemoteStationProvider _remoteStationProvider;
-        public StationRepository(IRemoteStationProvider remoteStationProvider)
+        private readonly IStationDataSource _remoteStationProvider;
+        public StationRepository(IStationDataSource remoteStationProvider)
         {
             _remoteStationProvider = remoteStationProvider;
         }
