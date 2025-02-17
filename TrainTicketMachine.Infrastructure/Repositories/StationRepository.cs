@@ -7,17 +7,16 @@ namespace TrainTicketMachine.Infrastructure.Repositories
 {
     public class StationRepository : IStationRepository
     {
-        private static readonly HttpClient _httpClient = new HttpClient();
-        private readonly string _dataUrl = string.Empty;
-
-        public StationRepository(IConfiguration configuration)
+        private readonly IRemoteStationProvider _remoteStationProvider;
+        public StationRepository(IRemoteStationProvider remoteStationProvider)
         {
-            _dataUrl = configuration["StationData:Url"];
+            _remoteStationProvider = remoteStationProvider;
         }
         public async Task<List<string>> SearchStationsAsync(string query)
         {
-            var stations = await GetStationsFromRemoteAsync();
-            return stations.Where(s => s.StartsWith(query, StringComparison.OrdinalIgnoreCase)).ToList();
+            var stations = await _remoteStationProvider.GetStationsFromRemoteAsync();
+            var stationnames = stations.Select(s => s.stationName);
+            return stationnames.Where(s => s.StartsWith(query, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
         public async Task<List<char>> GetNextCharactersAsync(string query)
@@ -32,13 +31,6 @@ namespace TrainTicketMachine.Infrastructure.Repositories
                 }
             }
             return nextChars.OrderBy(c => c).ToList();
-        }
-
-        private async Task<List<string>> GetStationsFromRemoteAsync()
-        {
-            var response = await _httpClient.GetStringAsync(_dataUrl);
-            var stationData = JsonSerializer.Deserialize<List<RemoteStationResponse>>(response);
-            return stationData.Select(s => s.stationName).ToList();
         }
     }
 }
