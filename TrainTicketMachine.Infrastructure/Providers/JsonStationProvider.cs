@@ -20,7 +20,7 @@ namespace TrainTicketMachine.Infrastructure.Providers
             _dataUrl = configuration["StationData:Url"];
         }
 
-        public async Task<List<RemoteStationResponse>> GetStationsFromRemoteAsync()
+        public async Task<List<RemoteStationResponse>> LoadStationsAsync()
         {
             var response = await _httpClient.GetStringAsync(_dataUrl);
             var stationData = JsonSerializer.Deserialize<List<RemoteStationResponse>>(response);

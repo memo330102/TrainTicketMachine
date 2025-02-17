@@ -14,7 +14,7 @@ namespace TrainTicketMachine.Infrastructure.Repositories
         }
         public async Task<List<string>> SearchStationsAsync(string query)
         {
-            var stations = await _remoteStationProvider.GetStationsFromRemoteAsync();
+            var stations = await _remoteStationProvider.LoadStationsAsync();
             var stationnames = stations.Select(s => s.stationName);
             return stationnames.Where(s => s.StartsWith(query, StringComparison.OrdinalIgnoreCase)).ToList();
         }
