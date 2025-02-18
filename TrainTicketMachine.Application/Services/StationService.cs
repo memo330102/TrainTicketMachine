@@ -21,7 +21,16 @@ namespace TrainTicketMachine.Application.Services
 
         public async Task<List<char>> GetNextCharactersAsync(string query)
         {
-            return await _repository.GetNextCharactersAsync(query);
+            var stations = await _repository.SearchStationsAsync(query);
+            var nextChars = new HashSet<char>();
+            foreach (var station in stations)
+            {
+                if (station.Length > query.Length)
+                {
+                    nextChars.Add(station[query.Length]);
+                }
+            }
+            return nextChars.OrderBy(c => c).ToList();
         }
     }
 }

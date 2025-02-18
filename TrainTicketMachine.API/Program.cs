@@ -1,12 +1,17 @@
 using TrainTicketMachine.Application.Contracts;
 using TrainTicketMachine.Application.Services;
 using TrainTicketMachine.Infrastructure.Contracts;
+using TrainTicketMachine.Infrastructure.Providers;
 using TrainTicketMachine.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddMemoryCache();
+
 builder.Services.Configure<StationRepository>(builder.Configuration.GetSection("StationData"));
+builder.Services.AddScoped<IStationDataSource, JsonStationProvider>();
 builder.Services.AddScoped<IStationRepository, StationRepository>();
+
 builder.Services.AddScoped<IStationService, StationService>();
 
 builder.Services.AddControllers();

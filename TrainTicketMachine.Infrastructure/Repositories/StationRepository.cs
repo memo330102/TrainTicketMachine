@@ -7,14 +7,17 @@ namespace TrainTicketMachine.Infrastructure.Repositories
 {
     public class StationRepository : IStationRepository
     {
-        private readonly IStationDataSource _remoteStationProvider;
+        private readonly IStationDataSource _dataSource;
+        private static List<RemoteStationResponse> _cachedStations = new List<RemoteStationResponse>();
+        private static readonly SemaphoreSlim _cacheLock = new SemaphoreSlim(1, 1);
         public StationRepository(IStationDataSource remoteStationProvider)
         {
-            _remoteStationProvider = remoteStationProvider;
+            _dataSource = remoteStationProvider;
         }
+
         public async Task<List<string>> SearchStationsAsync(string query)
         {
-            var stations = await _remoteStationProvider.LoadStationsAsync();
+            var stations = await _dataSource.LoadStationsAsync();
             var stationnames = stations.Select(s => s.stationName);
             return stationnames.Where(s => s.StartsWith(query, StringComparison.OrdinalIgnoreCase)).ToList();
         }
