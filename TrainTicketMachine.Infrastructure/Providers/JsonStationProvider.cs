@@ -17,11 +17,11 @@ namespace TrainTicketMachine.Infrastructure.Providers
             _dataUrl = configuration["StationData:Url"] ?? "";
         }
 
-        public async Task<List<RemoteStationResponse>> LoadStationsAsync()
+        public async Task<List<StationDataSourceResponse>> LoadStationsAsync()
         {
 
             var response = await _httpClient.GetStringAsync(_dataUrl);
-            var stationData = JsonSerializer.Deserialize<List<RemoteStationResponse>>(response);
+            var stationData = JsonSerializer.Deserialize<List<StationDataSourceResponse>>(response);
 
             return stationData;
         }

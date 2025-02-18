@@ -18,9 +18,9 @@ namespace TrainTicketMachine.API.Controllers
         [HttpGet("search")]
         public async Task<IActionResult> Search([FromQuery] string query)
         {
-            var stations = await _stationService.SearchStationsAsync(query);
-            var nextChars = await _stationService.GetNextCharactersAsync(query);
-            return Ok(new { Stations = stations.Select(s => s.Name.Value), NextCharacters = nextChars });
+            var fındStatıonsbySerachQuery = await _stationService.SearchStationsAsync(query);
+
+            return Ok(fındStatıonsbySerachQuery);
         }
     }
 }

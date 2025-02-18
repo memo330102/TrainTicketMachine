@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrainTicketMachine.Infrastructure.Models.Statıon
 {
-    public class RemoteStationResponse
+    public class StationDataSourceResponse
     {
         public string stationName { get; set; } = string.Empty;
         public string stationCode { get; set; } = string.Empty;
