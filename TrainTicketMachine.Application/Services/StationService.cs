@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using TrainTicketMachine.Application.Contracts;
-using TrainTicketMachine.Domain.Entities;
 using TrainTicketMachine.Domain.Models.Station;
 using TrainTicketMachine.Infrastructure.Contracts;
 using TrainTicketMachine.Infrastructure.Models.Statıon;
@@ -32,7 +31,7 @@ namespace TrainTicketMachine.Application.Services
             }
             else
             {
-                stations = await _repository.SearchStationsAsync(query);
+                stations = await _repository.SearchStationsAsync();
 
                 await _cache.SetCacheValueAsync(_stationListCacheKey, stations, TimeSpan.FromHours(1));
             }

@@ -5,6 +5,7 @@ using TrainTicketMachine.Infrastructure.Caching;
 using TrainTicketMachine.Infrastructure.Contracts;
 using TrainTicketMachine.Infrastructure.Providers;
 using TrainTicketMachine.Infrastructure.Repositories;
+using TrainTicketMachine.Infrastructure.BackgroundServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,8 @@ builder.Services.AddScoped<IStationCacheService, StationCacheService>();
 
 builder.Services.AddScoped<IStationService, StationService>();
 builder.Services.AddScoped<IStationHelper, StationHelper>();
+
+builder.Services.AddHostedService<StationCacheRefresher>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

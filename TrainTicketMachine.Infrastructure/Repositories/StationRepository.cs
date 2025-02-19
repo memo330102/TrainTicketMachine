@@ -14,7 +14,7 @@ namespace TrainTicketMachine.Infrastructure.Repositories
             _dataSources = dataSources;
         }
 
-        public async Task<List<StationDataSourceResponse>> SearchStationsAsync(string query)
+        public async Task<List<StationDataSourceResponse>> SearchStationsAsync()
         {
             var dataTasks = _dataSources.Select(ds => ds.LoadStationsAsync());
             var results = await Task.WhenAll(dataTasks);
