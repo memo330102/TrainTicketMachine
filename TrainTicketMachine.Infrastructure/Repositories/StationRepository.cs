@@ -14,16 +14,17 @@ namespace TrainTicketMachine.Infrastructure.Repositories
             _dataSources = dataSources;
         }
 
-        public async Task<List<StationDataSourceResponse>> SearchStationsAsync()
+        public async Task<HashSet<StationDataSourceResponse>> SearchStationsAsync()
         {
             var dataTasks = _dataSources.Select(ds => ds.LoadStationsAsync());
             var results = await Task.WhenAll(dataTasks);
 
             var combinedStations = results
                                    .SelectMany(stationList => stationList)
-                                   .GroupBy(s => s.stationName, StringComparer.OrdinalIgnoreCase)
+                                   .GroupBy(s => s.stationCode, StringComparer.OrdinalIgnoreCase)
                                    .Select(g => g.First())
-                                   .ToList();
+                                   .ToHashSet();
+
 
             return combinedStations;
         }

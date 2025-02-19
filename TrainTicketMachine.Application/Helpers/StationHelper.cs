@@ -20,7 +20,7 @@ namespace TrainTicketMachine.Application.Helpers
                 .ToList();
         }
 
-        public List<string> FindStationsBySearch(string query, List<StationDataSourceResponse> stations)
+        public List<string> FindStationsBySearch(string query, HashSet<StationDataSourceResponse> stations)
         {
             return stations
                 .Where(n => n.stationName.StartsWith(query, StringComparison.OrdinalIgnoreCase))

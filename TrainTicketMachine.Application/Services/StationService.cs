@@ -23,8 +23,8 @@ namespace TrainTicketMachine.Application.Services
 
         public async Task<StationSearchResult> SearchStationsAsync(string query)
         {
-            List<StationDataSourceResponse> stations = new List<StationDataSourceResponse>();
-            var cachedData = await _cache.GetCacheValueAsync<List<StationDataSourceResponse>>(_stationListCacheKey);
+            HashSet<StationDataSourceResponse> stations = new HashSet<StationDataSourceResponse>();
+            var cachedData = await _cache.GetCacheValueAsync<HashSet<StationDataSourceResponse>>(_stationListCacheKey);
             if (cachedData != null)
             {
                 stations = cachedData;

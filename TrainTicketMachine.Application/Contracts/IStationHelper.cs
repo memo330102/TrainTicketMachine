@@ -9,7 +9,7 @@ namespace TrainTicketMachine.Application.Contracts
 {
     public interface IStationHelper
     {
-        List<string> FindStationsBySearch(string query, List<StationDataSourceResponse> stations);
+        List<string> FindStationsBySearch(string query, HashSet<StationDataSourceResponse> stations);
         List<char> FindNextCharacters(string query, List<string> stationNames);
     }
 }

@@ -9,6 +9,6 @@ namespace TrainTicketMachine.Infrastructure.Contracts
 {
     public interface IStationRepository
     {
-        Task<List<StationDataSourceResponse>> SearchStationsAsync();
+        Task<HashSet<StationDataSourceResponse>> SearchStationsAsync();
     }
 }
