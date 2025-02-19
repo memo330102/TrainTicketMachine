@@ -28,6 +28,8 @@ Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .CreateLogger();
 
+builder.Services.AddSingleton(Log.Logger);
+
 builder.Host.UseSerilog();
 
 builder.Services.AddControllers();
