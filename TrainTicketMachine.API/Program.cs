@@ -7,6 +7,7 @@ using TrainTicketMachine.Infrastructure.Providers;
 using TrainTicketMachine.Infrastructure.Repositories;
 using TrainTicketMachine.Infrastructure.BackgroundServices;
 using TrainTicketMachine.Application.Configurations;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,12 @@ builder.Services.AddScoped<IStationService, StationService>();
 builder.Services.AddScoped<IStationHelper, StationHelper>();
 
 builder.Services.AddHostedService<StationCacheRefresher>();
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 builder.Services.AddControllers();
 
