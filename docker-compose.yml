@@ -1,0 +1,6 @@
+services:
+  trainticketmachine.api:
+    image: ${DOCKER_REGISTRY-}trainticketmachineapi
+    build:
+      context: .
+      dockerfile: TrainTicketMachine.API/Dockerfile
