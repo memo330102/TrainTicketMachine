@@ -1,6 +1,5 @@
 using TrainTicketMachine.Application.Contracts;
 using TrainTicketMachine.Application.Services;
-using TrainTicketMachine.Application.Helpers;
 using TrainTicketMachine.Infrastructure.Contracts;
 using TrainTicketMachine.Infrastructure.Providers;
 using TrainTicketMachine.Infrastructure.Repositories;
@@ -8,6 +7,7 @@ using TrainTicketMachine.Application.Configurations;
 using Serilog;
 using TrainTicketMachine.Caching;
 using TrainTicketMachine.BackendService;
+using TrainTicketMachine.Infrastructure.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 

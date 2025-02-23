@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainTicketMachine.Infrastr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainTicketMachine.API", "TrainTicketMachine.API\TrainTicketMachine.API.csproj", "{09E7EFF6-F254-49FE-9BC7-647201F7BFD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{6289D927-73A1-46FA-BAAD-D0063B46FF22}"
-EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{B3B67E86-7293-4109-8A8F-B09C35D06095}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainTicketMachine.Caching", "..\TrainTicketMachine.Caching\TrainTicketMachine.Caching.csproj", "{7ED5AFB4-66B9-4F5C-B85E-5CE721FAA301}"
@@ -41,10 +39,6 @@ Global
 		{09E7EFF6-F254-49FE-9BC7-647201F7BFD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09E7EFF6-F254-49FE-9BC7-647201F7BFD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09E7EFF6-F254-49FE-9BC7-647201F7BFD1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6289D927-73A1-46FA-BAAD-D0063B46FF22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6289D927-73A1-46FA-BAAD-D0063B46FF22}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6289D927-73A1-46FA-BAAD-D0063B46FF22}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6289D927-73A1-46FA-BAAD-D0063B46FF22}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B3B67E86-7293-4109-8A8F-B09C35D06095}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B3B67E86-7293-4109-8A8F-B09C35D06095}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3B67E86-7293-4109-8A8F-B09C35D06095}.Release|Any CPU.ActiveCfg = Release|Any CPU

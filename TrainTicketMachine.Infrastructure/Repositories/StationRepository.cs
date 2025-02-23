@@ -8,10 +8,11 @@ namespace TrainTicketMachine.Infrastructure.Repositories
     public class StationRepository : IStationRepository
     {
         private readonly IEnumerable<IStationDataSource> _dataSources;
-
-        public StationRepository(IEnumerable<IStationDataSource> dataSources)
+        private readonly IStationHelper _helper;
+        public StationRepository(IEnumerable<IStationDataSource> dataSources, IStationHelper helper)
         {
             _dataSources = dataSources;
+            _helper = helper;
         }
 
         public async Task<HashSet<StationDataSourceResponse>> SearchStationsAsync()
@@ -19,12 +20,7 @@ namespace TrainTicketMachine.Infrastructure.Repositories
             var dataTasks = _dataSources.Select(ds => ds.LoadStationsAsync());
             var results = await Task.WhenAll(dataTasks);
 
-            var combinedStations = results
-                                   .SelectMany(stationList => stationList)
-                                   .GroupBy(s => s.stationCode, StringComparer.OrdinalIgnoreCase)
-                                   .Select(g => g.First())
-                                   .ToHashSet();
-
+            var combinedStations = _helper.CombineStations(results);
 
             return combinedStations;
         }

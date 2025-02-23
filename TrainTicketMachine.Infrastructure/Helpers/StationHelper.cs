@@ -3,13 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TrainTicketMachine.Application.Contracts;
+using TrainTicketMachine.Infrastructure.Contracts;
 using TrainTicketMachine.Infrastructure.Models.Statıon;
 
-namespace TrainTicketMachine.Application.Helpers
+namespace TrainTicketMachine.Infrastructure.Helpers
 {
     public class StationHelper : IStationHelper
     {
+        public HashSet<StationDataSourceResponse> CombineStations(List<StationDataSourceResponse>[] allStations)
+        {
+            return allStations
+                .SelectMany(stationList => stationList)
+                .GroupBy(s => s.stationCode, StringComparer.OrdinalIgnoreCase)
+                .Select(g => g.First())
+                .ToHashSet();
+        }
+
         public List<char> FindNextCharacters(string query, List<string> stationNames)
         {
             return stationNames
@@ -28,4 +37,5 @@ namespace TrainTicketMachine.Application.Helpers
                 .ToList();
         }
     }
+
 }
