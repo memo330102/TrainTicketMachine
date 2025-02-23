@@ -1,13 +1,13 @@
 using TrainTicketMachine.Application.Contracts;
 using TrainTicketMachine.Application.Services;
 using TrainTicketMachine.Application.Helpers;
-using TrainTicketMachine.Infrastructure.Caching;
 using TrainTicketMachine.Infrastructure.Contracts;
 using TrainTicketMachine.Infrastructure.Providers;
 using TrainTicketMachine.Infrastructure.Repositories;
-using TrainTicketMachine.Infrastructure.BackgroundServices;
 using TrainTicketMachine.Application.Configurations;
 using Serilog;
+using TrainTicketMachine.Caching;
+using TrainTicketMachine.BackendService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +17,8 @@ builder.Services.Configure<StationRepository>(builder.Configuration.GetSection("
 
 builder.Services.AddScoped<IStationDataSource, JsonStationProvider>();
 builder.Services.AddScoped<IStationRepository, StationRepository>();
-builder.Services.AddScoped<IStationCacheService, StationCacheService>();
+
+builder.Services.AddScoped<ICacheService, CacheService>();
 
 builder.Services.AddScoped<IStationService, StationService>();
 builder.Services.AddScoped<IStationHelper, StationHelper>();

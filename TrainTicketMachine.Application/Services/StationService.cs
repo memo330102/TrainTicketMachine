@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Serilog;
 using TrainTicketMachine.Application.Contracts;
+using TrainTicketMachine.Caching;
 using TrainTicketMachine.Domain.Models.Station;
 using TrainTicketMachine.Infrastructure.Contracts;
 using TrainTicketMachine.Infrastructure.Models.Statıon;
@@ -11,10 +12,10 @@ namespace TrainTicketMachine.Application.Services
     {
         private readonly IStationRepository _repository;
         private readonly IStationHelper _helper;
-        private readonly IStationCacheService _cache;
+        private readonly ICacheService _cache;
         private readonly ILogger _logger;
         private readonly string _stationListCacheKey;
-        public StationService(IStationRepository repository, IStationCacheService cache, IStationHelper helper, IConfiguration configuration, ILogger logger)
+        public StationService(IStationRepository repository, ICacheService cache, IStationHelper helper, IConfiguration configuration, ILogger logger)
         {
             _repository = repository;
             _cache = cache;

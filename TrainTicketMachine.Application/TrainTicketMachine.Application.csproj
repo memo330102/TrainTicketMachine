@@ -19,6 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TrainTicketMachine.BackendService\TrainTicketMachine.BackendService.csproj" />
+    <ProjectReference Include="..\..\TrainTicketMachine.Caching\TrainTicketMachine.Caching.csproj" />
     <ProjectReference Include="..\TrainTicketMachine.Domain\TrainTicketMachine.Domain.csproj" />
     <ProjectReference Include="..\TrainTicketMachine.Infrastructure\TrainTicketMachine.Infrastructure.csproj" />
   </ItemGroup>

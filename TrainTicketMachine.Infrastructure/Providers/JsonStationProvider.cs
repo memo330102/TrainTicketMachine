@@ -1,5 +1,4 @@
 ﻿using System.Text.Json;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using TrainTicketMachine.Infrastructure.Contracts;
 using TrainTicketMachine.Infrastructure.Models.Statıon;
