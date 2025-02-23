@@ -16,6 +16,8 @@ COPY ["TrainTicketMachine.API/TrainTicketMachine.API.csproj", "TrainTicketMachin
 COPY ["TrainTicketMachine.Application/TrainTicketMachine.Application.csproj", "TrainTicketMachine.Application/"]
 COPY ["TrainTicketMachine.Domain/TrainTicketMachine.Domain.csproj", "TrainTicketMachine.Domain/"]
 COPY ["TrainTicketMachine.Infrastructure/TrainTicketMachine.Infrastructure.csproj", "TrainTicketMachine.Infrastructure/"]
+COPY ["TrainTicketMachine.BackendService/TrainTicketMachine.BackendService.csproj", "TrainTicketMachine.BackendService/"]
+COPY ["TrainTicketMachine.Caching/TrainTicketMachine.Caching.csproj", "TrainTicketMachine.Caching/"]
 RUN dotnet restore "./TrainTicketMachine.API/TrainTicketMachine.API.csproj"
 COPY . .
 WORKDIR "/src/TrainTicketMachine.API"
