@@ -12,5 +12,5 @@ It follows SOLID principles, uses caching for optimized speed, and supports mult
 + Dockerized for Easy Deployment
 
 #  Project Architecture
-
+![https://github.com/memo330102/TrainTicketMachine/blob/master/ProjectArchitecture.jpeg]
 
