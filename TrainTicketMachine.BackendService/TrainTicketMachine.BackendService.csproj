@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TrainTicketMachine.Caching\TrainTicketMachine.Caching.csproj" />
-    <ProjectReference Include="..\TrainTicketMachine\TrainTicketMachine.Infrastructure\TrainTicketMachine.Infrastructure.csproj" />
+    <ProjectReference Include="..\TrainTicketMachine.Infrastructure\TrainTicketMachine.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
